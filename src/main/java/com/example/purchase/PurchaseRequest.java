@@ -4,7 +4,13 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Data;
 
 public class PurchaseRequest {
-
+    @Data
+    public static class PurchaseDTO {
+        private String productName;
+        private Integer productPrice;
+        private Integer productQty;
+        private Integer purQty;
+    }
     @Data
     public class SaveDTO {
         private String buyerName;
@@ -12,6 +18,11 @@ public class PurchaseRequest {
         private String productName;
         private Integer productPrice;
         private Integer productQty;
+        private Integer purQty;
+    }
+
+    @Data
+    public class UpdateDTO {
         private Integer purQty;
     }
 }

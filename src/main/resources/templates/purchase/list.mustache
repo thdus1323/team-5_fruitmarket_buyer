@@ -1,0 +1,54 @@
+{{> layout/header}}
+
+<style>
+    .offer-table th, .offer-table td {
+        text-align: center;
+        vertical-align: middle; /* 셀 내용을 수직 가운데 정렬 */
+    }
+</style>
+
+<div class="container">
+    <table class="table table-hover offer-table scroll" style="text-align: center; border-top:2px solid #ddd">
+        <br>
+        <h2>내 구매 목록</h2>
+        <br>
+
+
+        <!--        목록 -->
+        <thead>
+        <tr>
+            <th class="center-align col-1">No</th>
+            <th class="center-align col-3">상품명</th>
+            <th class="center-align col-2">상품가격</th>
+
+            <th class="center-align col-2">구매수량</th>
+
+        </tr>
+        </thead>
+        <!--        목록 끝-->
+
+        <!--        상품 테이블-->
+
+        {{#purchaseList}}
+            <tbody>
+            <tr class="offer-table">
+                <th scope="row">{{buyerId}}</th>
+                <td>{{productName}}</td>
+                <td>{{productPrice}}</td>
+
+                <td class="purQty">{{purQty}}</td>
+            </tr>
+            </tbody>
+        {{/purchaseList}}
+
+
+        <!--        상품 테이블 끝-->
+
+    </table>
+</div>
+
+<div style="margin-bottom: 15%"></div>
+
+
+{{> layout/footer}}
+

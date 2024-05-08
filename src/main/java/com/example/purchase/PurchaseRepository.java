@@ -31,6 +31,17 @@ public class PurchaseRepository {
         return purchaseList;
     }
 
+
+    //상품구매수량
+    public void updateById(Integer buyerId, PurchaseRequest.UpdateDTO reqDTO){
+        Query query = em.createNativeQuery("update purchase_tb set pur_qty=? where buyer_id=?");
+        query.setParameter(1, reqDTO.getPurQty());
+        query.setParameter(2,buyerId);
+        query.executeUpdate();
+
+    }
+
+
     public void save(Integer buyerId, String buyerName,  PurchaseRequest.SaveDTO reqDTO) {
         String q = """
                 insert into purchase_tb(buyer_id, buyer_name, product_id, product_name, product_price, product_qty, pur_qty, created_at) 
@@ -49,4 +60,14 @@ public class PurchaseRepository {
         query.executeUpdate();
     }
 
+    //내 구매목록, 상품재고 수량 변경
+    public void updateQty(PurchaseRequest.SaveDTO reqDTO){
+        String q = """
+                update product_tb set product_qty = product_qty - ? where product_id = ?
+                """;
+        Query query = em.createNativeQuery(q);
+        query.setParameter(1, reqDTO.getPurQty());
+        query.setParameter(2, reqDTO.getProductId());
+        query.executeUpdate();
+    }
 }

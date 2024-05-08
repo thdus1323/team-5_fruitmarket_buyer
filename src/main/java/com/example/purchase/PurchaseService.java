@@ -32,15 +32,23 @@ public class PurchaseService {
         purchaseRepository.save(buyerId, buyer.getBuyerName(), reqDTO);
 
         //업데이트
-//        purchaseRepository.updateQty(reqDTO);
+        purchaseRepository.updateQty(reqDTO);
 
 
     }
 
 
+    //내구매목록보기
+    public List<Purchase> getPurchaseList(Integer buyerId){
+        List<Purchase> purchaseList = purchaseRepository.findByBuyerId(buyerId);
+        return purchaseList;
+    }
 
-
-
+    //구매수량 수정하기
+    @Transactional
+    public void changePurQty(Integer buyerId, PurchaseRequest.UpdateDTO reqDTO){
+        purchaseRepository.updateById(buyerId, reqDTO);
+    }
 
 
 }
