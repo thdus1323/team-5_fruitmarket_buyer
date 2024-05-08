@@ -47,7 +47,7 @@
 join-form.mustache [뷰] : action, 메서드, 기본 폼, 내용 확인
 
 ```java
- **<form action="/join" method="post" enctype="application/x-www-form-urlencoded">**
+ ⭐ <form action="/join" method="post" enctype="application/x-www-form-urlencoded"> ⭐
                 <div class="mb-3">
                     <input id="buyerName" type="text" class="form-control" placeholder="Enter buyerName"
                            name="buyerName" value="ssar">
