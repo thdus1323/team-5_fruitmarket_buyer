@@ -1,0 +1,42 @@
+{{> layout/header}}
+
+<div class="container">
+    <table class="table table-hover offer-table scroll" style="text-align: center; border-top:2px solid #ddd">
+        <br>
+        <h2>상품 목록</h2>
+        <br>
+
+        <thead>
+        <tr>
+            <th class="center-align col-1">No</th>
+            <th class="center-align col-5">상품명</th>
+            <th class="center-align col-2">상품가격</th>
+            <th class="center-align col-2">상품수량</th>
+            <th class="center-align col-2">상세보기</th>
+        </tr>
+        </thead>
+        {{#productList}}
+            <tbody>
+
+            <tr class="offer-table">
+                <th scope="row">{{productId}}</th>
+                <td>{{productName}}</td>
+                <td>{{productPrice}}</td>
+                <td>{{productQty}}</td>
+                <td>
+                    <div class="new-create-button">
+                        <form action="/product/{{productId}}/detail">
+                            <!--                            // 왜냐면 중괄호 productList로 이미 감쌌기 때문에 product.id 하지 않아도 알아먹는다.-->
+                            <button type="submit" class="btn btn-outline-primary">상세보기</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+
+            </tbody>
+        {{/productList}}
+    </table>
+</div>
+
+<div style="margin-bottom: 25%"></div>
+{{> layout/footer}}
