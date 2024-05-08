@@ -19,9 +19,9 @@ public class ProductRepository {
     }
 
     //상품상세보기
-    public Product findById(int id){
-        Query query = em.createNativeQuery("select * from product_tb where id=?", Product.class);
-        query.setParameter(1,id);
+    public Product findById(int productId){
+        Query query = em.createNativeQuery("select * from product_tb where product_id=?", Product.class);
+        query.setParameter(1,productId);
         return (Product) query.getSingleResult();
     }
 
