@@ -65,7 +65,6 @@ join-form.mustache [뷰] : action, 메서드, 기본 폼, 내용 확인
 BuyerController : 회원가입 뷰로 가능 기능, reqDTO를 통해 join 정보 가져오기
 
 ```java
-//회원가입
     @PostMapping("/join")
     public String join(BuyerRequest.JoinDTO reqDTO) {
         buyerService.joinByNameAndPwAndEmail(reqDTO);
@@ -83,7 +82,6 @@ BuyerController : 회원가입 뷰로 가능 기능, reqDTO를 통해 join 정�
 BuyerService : join을 위해 필요한 정보(이름, 패스워드, 이메일)들을 Repository로 전달
 
 ```java
- //회원가입
     @Transactional
     public void joinByNameAndPwAndEmail(BuyerRequest.JoinDTO reqDTO){
         buyerRepository.join(reqDTO);
@@ -93,7 +91,6 @@ BuyerService : join을 위해 필요한 정보(이름, 패스워드, 이메일)�
 BuyerRepository : db에 입력되는 쿼리 입력
 
 ```java
- //회원가입
     public void join(BuyerRequest.JoinDTO reqDTO) {
         Query query = em.createNativeQuery(
                 """
@@ -130,7 +127,6 @@ BuyerRepository : db에 입력되는 쿼리 입력
 (2) BuyerService : 로그인에 필요한 이름, 패스워드를 요청 디티오에 담아서 세션에 담아줌.
 
 ```java
-//로그인
     public Buyer loginByNameAndPw(BuyerRequest.LoginDTO reqDTO){
         Buyer sessionBuyer = buyerRepository.login(reqDTO);
         return sessionBuyer;
@@ -140,7 +136,6 @@ BuyerRepository : db에 입력되는 쿼리 입력
 (3) BuyerRepository : 로그인에 필요한 정보(이름, 패스워드)를 DTO에 담아 요청하고 그것을 db에서 가져옴.
 
 ```java
- //로그인
     public Buyer login(BuyerRequest.LoginDTO reqDTO) {
         Query query = em.createNativeQuery("select * from buyer_tb where buyer_name=? and buyer_pw=?", Buyer.class);
         query.setParameter(1, reqDTO.getBuyerName());
