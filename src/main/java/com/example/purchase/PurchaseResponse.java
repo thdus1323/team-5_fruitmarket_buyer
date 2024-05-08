@@ -5,6 +5,7 @@ import lombok.Data;
 public class PurchaseResponse {
     @Data
     public class ListDTO {
+
         //목록구현하기
         private Integer buyerId;
         private Integer purQty;

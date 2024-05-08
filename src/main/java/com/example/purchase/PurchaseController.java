@@ -44,9 +44,7 @@ public class PurchaseController {
         return "redirect:/purchase/list";
     }
 
-
-    //구매수량을 저장을 해야함.
-//구매수량 수정하기
+//구매수량 수정,저장하기
     @PostMapping("/purchase/{purId}/update")
     public String update(@PathVariable Integer purId, PurchaseRequest.UpdateDTO reqDTO) {
         purchaseService.changePurQty(purId, reqDTO);

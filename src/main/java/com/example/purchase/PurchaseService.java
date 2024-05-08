@@ -33,10 +33,7 @@ public class PurchaseService {
 
         //업데이트
         purchaseRepository.updateQty(reqDTO);
-
-
     }
-
 
     //내구매목록보기
     public List<Purchase> getPurchaseList(Integer buyerId){
@@ -49,6 +46,5 @@ public class PurchaseService {
     public void changePurQty(Integer buyerId, PurchaseRequest.UpdateDTO reqDTO){
         purchaseRepository.updateById(buyerId, reqDTO);
     }
-
 
 }
